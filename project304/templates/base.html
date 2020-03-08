@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSAFY304</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+</head>
+<body>
+    <div class="main">
+        <a href="">SSAFY304</a>
+    </div>
+    <div class="topnav">
+        <a href=""><img src="{% static 'logo3.png'%}" alt="" class="logo"></a>
+        <a href="">Home</a>
+    </div>
+    {% block contents %}
+
+    {% endblock %}
+</body>
+</html>

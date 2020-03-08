@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+
+.topnav {
+    background-color: blue;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.topnav a {
+    display: inline;
+}
