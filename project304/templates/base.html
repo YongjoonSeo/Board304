@@ -9,15 +9,22 @@
     <link rel="stylesheet" href="{% static 'base.css' %}">
 </head>
 <body>
+    {% if user.is_authenticated %}
     <div class="main">
         <a href="">SSAFY304</a>
     </div>
     <div class="topnav">
         <a href=""><img src="{% static 'logo3.png'%}" alt="" class="logo"></a>
         <a href="">Home</a>
+        <form action="{% url 'logout' %}" id="logout" method="POST">
+            {% csrf_token %} <button type="submit">로그아웃</button>
+        </form>
     </div>
     {% block contents %}
 
     {% endblock %}
+    {% else %}
+    <a href="{% url 'login' %}">로그인이 필요한 페이지입니다.</a> 
+    {% endif %}
 </body>
 </html>

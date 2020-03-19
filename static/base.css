@@ -1,9 +1,10 @@
 body {
     margin: 0;
+    background-color: #F5F5F5;
 }
 
 .topnav {
-    background-color: blue;
+    background-color: #222222;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -11,4 +12,11 @@ body {
 
 .topnav a {
     display: inline;
+    color: white;
+}
+
+.topnav .logo {
+    display: flex;
+    height: 5%;
+    width: 5%;
 }
