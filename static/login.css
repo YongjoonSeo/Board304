@@ -1,8 +1,51 @@
-{% load static %}
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR|Roboto&display=swap');
 
-body {
-    background-image: url('{% static "entrance.jpg" %}');
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-image: url('entrance.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center center;
+    background-attachment: fixed;
+}
 
+form {
+    width: 50%;
+    max-width: 645px;
+    min-width: 330px;
+    min-height: 475px;
+    height: 55vh;
+    margin: 20vh auto;
+    background-color: #F5F5F5;
+    box-shadow: 1rem 2rem 2rem black;
+    padding: 2rem 3rem;
+}
+
+form label {
+    display: inline-block;
+    padding: 1rem 0 0.8rem;
+}
+
+form button, label, input {
+    font-family: 'Noto Sans KR','Roboto', 'Nanum Gothic', sans-serif;
+    width: 100%;
+}
+
+form input {
+    height: 3rem;
+    opacity: 0.7;
+    padding-left: 1rem;
+}
+
+form button {
+    background-color: rgb(59, 144, 225);
+    height: 3rem;
+    border: none;
+    font-weight: 700;
+    color: white;
+    margin-top: 6vh;
+    cursor: pointer;
 }
