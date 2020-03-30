@@ -1,22 +1,220 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR|Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background-color: #F5F5F5;
+  font-family: 'Noto Sans KR','Roboto', 'Nanum Gothic', sans-serif;
 }
 
+/* navbar starts */
+
 .topnav {
-  background-color: #222222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 ;
+  background-color: #F5F5F5;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  height: 40px;
 }
 
-.topnav a {
-  display: inline;
-  color: white;
+a {
+  text-decoration: none;
+  color: black;
 }
 
-.topnav .logo {
+.topnav .boardlist {
+  height: 40px;
+}
+
+.logo {
+  height: 40px;
+}
+
+/* navbar profile starts */
+.user-box {
+  width: 65px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.user-box em {
+  font-style: normal;
+  color: #3797f4;
+}
+
+#clickbox1, #clickbox2 {
+  position: relative;
+  cursor: pointer;
+  padding-left: 30px;
+  padding-right: 50px;
+}
+
+
+.user-box::after {
+  position: absolute;
+  top: 45%;
+  background: url('icon-btn-userinfo-open.png') no-repeat;
+  content: '';
+  width: 9px;
+  height: 7px;
+  margin-left: 25px;
+}
+
+#profile-layer {
+  display: none;
+}
+
+.on {
+  display: block !important;
+  position: absolute;
+  box-shadow: 0 5px 25px 0 rgba(0,0,0,.12);
+  z-index: 1030;
+  margin-top: -56px;
+  margin-left: -16px;
+  background-color: white;
+  padding: 16px 27px 16px 16px;
+}
+
+#logout button {
+  border: none;
+  font-family: 'Noto Sans KR','Roboto', 'Nanum Gothic', sans-serif;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#logout button:focus {
+  outline: 0;
+}
+
+#logout .change-pw {
+  display: block;
+  width: 78%;
+  font-size: 13px;
+  height: auto;
+  margin: 36px auto 20px;
+}
+
+#logout .icon-change-pw {
+  display: inline-block;
+  background: url('icon-head-member-info.jpg');
+  background-size: contain;
+  margin-right: 12px;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+#logout .icon-logout {
+  display: inline-block;
+  background: url('icon-head-logout.jpg');
+  background-size: contain;
+  margin-right: 40px;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+
+/* navbar profile ends */
+
+.boardlists {
+  list-style: none;
   display: flex;
-  height: 5%;
-  width: 5%;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  min-width: 430px;
 }
+
+.boardlist li {
+  width: 25%;
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  margin-right: -60px;
+  width: 300px;
+}
+
+.links .link {
+  display: flex;
+  height: 100px;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px 0 0;
+  line-height: 19px;
+  font-weight: 700;
+}
+
+.edu {
+  text-align: right;
+  background-color: #3297CE;
+  color: #fff;
+}
+
+.edu span, .lab span {
+  border-bottom: 2px solid #fff;
+  padding: 0 0 8px 10px;
+}
+
+.lab {
+  text-align: right;
+  background-color: #3fce32;
+  color: #fff;
+}
+
+.job span {
+  border-bottom: 2px solid black;
+  padding: 0 10px 8px 0;
+}
+
+.job {
+  text-align: left;
+  background-color: #e9eef1;
+  color: #1f2328;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .topnav {
+    padding: 15px 30px;
+    height: 100px;
+  }
+
+  .logo {
+    height: 70px;
+  }
+
+  .topnav a {
+    height: 70px;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .topnav {
+    padding: 15px 60px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .topnav {
+    padding: 15px calc((100% - 1300px) / 2);
+  }
+}
+
+/* navbar */

@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from .models import Student
 
 # Create your views here.
 
@@ -25,3 +28,21 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, '비밀번호가 변경되었습니다.')
+            return redirect('login')
+        else:
+            messages.error(request, '부적합한 비밀번호이거나 비밀번호가 일치하지 않습니다.')
+    else:
+        form = PasswordChangeForm(request.user)
+        context = {
+            'form': form
+        }
+        return render(request, 'accounts/change_password.html', context)
+

@@ -1,31 +1,71 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSAFY304</title>
-    <link rel="stylesheet" href="{% static 'base.css' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicons.ico' %}"
-</head>
-<body>
-    {% if user.is_authenticated %}
-    <div class="main">
-        <a href="">SSAFY304</a>
-    </div>
-    <div class="topnav">
-        <a href=""><img src="{% static 'logo3.png'%}" alt="" class="logo"></a>
-        <a href="">Home</a>
-        <form action="{% url 'logout' %}" id="logout" method="POST">
-            {% csrf_token %} <button type="submit">로그아웃</button>
-        </form>
-    </div>
-    {% block contents %}
+<html lang="ko">
 
-    {% endblock %}
-    {% else %}
-    <a href="{% url 'login' %}">로그인이 필요한 페이지입니다.</a> 
-    {% endif %}
-</body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block title %}
+  {% endblock %}
+  <link rel="stylesheet" href="{% static 'base.css' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicons.ico' %}" </head> <body>
+  {% if user.is_authenticated %}
+
+  <nav class="topnav">
+    <a href="/home/"><img src="{% static 'logo3.png' %}" alt="" class="logo"></a>
+    <ul class="boardlists">
+      <li><a href="#" class="boardlist">일반 게시판</a></li>
+      <li><a href="#" class="boardlist">코드공유 게시판</a></li>
+      <li><a href="#" class="boardlist">커리큘럼</a></li>
+      <li><a href="#" class="boardlist">식단표</a></li>
+    </ul>
+    <div class="profile-area">
+      <div class="profile-set">
+        <div id="clickbox1">
+          <div class="user-box">
+            <span>{{ user.student.number }}</span>
+            <span><em>{{ user.last_name }}{{ user.first_name }}</em>님</span>
+          </div>
+        </div>
+      </div>
+      <div id="profile-layer">
+        <div class="layer-inner">
+        <div id="clickbox2">
+          <div class="user-box">
+            <span>{{ user.student.number }}</span>
+            <span><em>{{ user.last_name }}{{ user.first_name }}</em>님</span>
+          </div>
+        </div>
+        <form action="{% url 'logout' %}" id="logout" method="POST">
+          {% csrf_token %} 
+          <a href="{% url 'change_password' %}" class="change-pw">
+            <i class="icon-change-pw"></i>
+            <span>비밀번호 변경</span>
+          </a>
+          <button type="submit">
+            <i class="icon-logout"></i>
+            <span>로그아웃</span>
+          </button>
+        </form>
+      </div>
+      </div>
+
+    </div>
+    <div class="links">
+      <a href="http://edu.ssafy.com/" class="link edu"><span>EDU<br>SSAFY</span></a>
+      <a href="https://lab.ssafy.com/" class="link lab"><span>LAB<br>SSAFY</span></a>
+      <a href="http://job.ssafy.com/" class="link job"><span>JOB<br>SSAFY</span></a>
+    </div>
+
+  </nav>
+
+
+  {% block contents %}
+  {% endblock %}
+  {% else %}
+  <a href="{% url 'login' %}">로그인이 필요한 페이지입니다.</a>
+  {% endif %}
+  </body>
+<script src="{% static 'base.js' %}"></script>
 </html>
