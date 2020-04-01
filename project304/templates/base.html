@@ -15,7 +15,7 @@
   <nav class="topnav">
     <a href="/home/" class="logo"><img src="{% static 'logo3.png' %}" alt="" class="logo"></a>
     <ul class="boardlists">
-      <li><a href="#" class="boardlist">일반 게시판</a></li>
+      <li><a href="{% url 'post_list' %}" class="boardlist">일반 게시판</a></li>
       <li><a href="#" class="boardlist">코드공유 게시판</a></li>
       <li><a href="#" class="boardlist">커리큘럼</a></li>
       <li><a href="#" class="boardlist">식단표</a></li>
@@ -61,7 +61,7 @@
     </div>
   </nav>
   <div id="dropdown-mobile">
-    <a href="#" class="dropdown-menu">일반 게시판</a>
+    <a href="{% url 'post_list' %}" class="dropdown-menu">일반 게시판</a>
     <a href="#" class="dropdown-menu">코드공유 게시판</a>
     <a href="#" class="dropdown-menu">커리큘럼</a>
     <a href="#" class="dropdown-menu">식단표</a>

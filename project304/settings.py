@@ -31,14 +31,15 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountsConfig',
-    'basic.apps.BasicConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'basic.apps.BasicConfig',
+    'accounts.apps.AccountsConfig',
+    'normalboard',
 ]
 
 MIDDLEWARE = [
