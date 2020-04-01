@@ -7,7 +7,7 @@
 body {
   margin: 0;
   background-color: #F5F5F5;
-  font-family: 'Noto Sans KR','Roboto', 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', 'Roboto', 'Nanum Gothic', sans-serif;
 }
 
 /* navbar starts */
@@ -16,13 +16,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 ;
+  padding: 0;
   background-color: #F5F5F5;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  height: 40px;
+  height: 60px;
+  padding: 10px 20px;
 }
 
 a {
@@ -40,9 +41,9 @@ a {
 
 /* navbar profile starts */
 .user-box {
-  width: 65px;
+  width: 130px;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .user-box em {
@@ -50,17 +51,17 @@ a {
   color: #3797f4;
 }
 
-#clickbox1, #clickbox2 {
+#clickbox1,
+#clickbox2 {
   position: relative;
   cursor: pointer;
-  padding-left: 30px;
-  padding-right: 50px;
+  padding-left: 15px;
+  padding-right: 30px;
 }
-
 
 .user-box::after {
   position: absolute;
-  top: 45%;
+  top: 35%;
   background: url('icon-btn-userinfo-open.png') no-repeat;
   content: '';
   width: 9px;
@@ -68,16 +69,21 @@ a {
   margin-left: 25px;
 }
 
-#profile-layer {
-  display: none;
+#clickbox2 .user-box::after {
+  background: url('icon-btn-userinfo-close.png') no-repeat;
+  background-size: contain;
 }
 
-.on {
-  display: block !important;
+.profile-set {
+  display: inline-block;
+}
+
+#profile-layer {
+  display: none;
   position: absolute;
-  box-shadow: 0 5px 25px 0 rgba(0,0,0,.12);
+  box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .12);
   z-index: 1030;
-  margin-top: -56px;
+  margin-top: -45px;
   margin-left: -16px;
   background-color: white;
   padding: 16px 27px 16px 16px;
@@ -85,10 +91,9 @@ a {
 
 #logout button {
   border: none;
-  font-family: 'Noto Sans KR','Roboto', 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', 'Roboto', 'Nanum Gothic', sans-serif;
   display: block;
   width: 100%;
-  margin-top: 20px;
   background-color: white;
   cursor: pointer;
   font-size: 13px;
@@ -100,7 +105,7 @@ a {
 
 #logout .change-pw {
   display: block;
-  width: 78%;
+  width: 65%;
   font-size: 13px;
   height: auto;
   margin: 36px auto 20px;
@@ -126,7 +131,47 @@ a {
   vertical-align: middle;
 }
 
+#hamburger {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px 10px;
+  margin: 0 -5px;
+  cursor: pointer;
+}
 
+.hamburger-icon {
+  background: url('icon-mobile-overlay-btn.png') no-repeat;
+  background-size: contain;
+  width: 18px;
+  height: 15px;
+}
+
+#dropdown-mobile {
+  display: none;
+  flex-flow: column wrap;
+  position: fixed;
+  top: 0;
+  margin-top: 60px;
+  z-index: 1030;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  width: 100%;
+  height: 200px;
+  padding: 10px 20px;
+  opacity: 0;
+}
+
+#dropdown-mobile.show {
+  display: flex;
+}
+
+.dropdown-menu {
+  padding: 10px;
+}
+
+.dropdown-menu:hover {
+  color: #3395f4;
+}
 /* navbar profile ends */
 
 .boardlists {
@@ -142,6 +187,10 @@ a {
 .boardlist li {
   width: 25%;
   text-align: center;
+}
+
+.boardlist:hover {
+  color: #3395f4;
 }
 
 .links {
@@ -167,7 +216,8 @@ a {
   color: #fff;
 }
 
-.edu span, .lab span {
+.edu span,
+.lab span {
   border-bottom: 2px solid #fff;
   padding: 0 0 8px 10px;
 }
@@ -189,6 +239,15 @@ a {
   color: #1f2328;
 }
 
+@media only screen and (max-width: 767px) {
+  .boardlists {
+    display: none;
+  }
+
+  .links {
+    display: none;
+  }
+}
 
 @media only screen and (min-width: 768px) {
   .topnav {
@@ -202,6 +261,41 @@ a {
 
   .topnav a {
     height: 70px;
+  }
+
+  .user-box {
+    width: 65px;
+    font-size: 14px;
+  }
+
+  .user-box::after {
+    top: 45%;
+  }
+
+  #clickbox1,
+  #clickbox2 {
+    padding-left: 30px;
+    padding-right: 50px;
+  }
+
+  #profile-layer {
+    margin-top: -56px;
+  }
+
+  #logout .change-pw {
+    width: 78%;
+  }
+
+  .profile-layer #hamburger {
+    display: none;
+  }
+
+  .profile-area #hamburger {
+    display: none;
+  }
+
+  #dropdown-mobile {
+    display: none !important;
   }
 }
 

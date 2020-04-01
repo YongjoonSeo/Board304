@@ -9,11 +9,11 @@
   {% block title %}
   {% endblock %}
   <link rel="stylesheet" href="{% static 'base.css' %}">
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicons.ico' %}" </head> <body>
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicons.ico' %}"> </head> <body>
   {% if user.is_authenticated %}
 
   <nav class="topnav">
-    <a href="/home/"><img src="{% static 'logo3.png' %}" alt="" class="logo"></a>
+    <a href="/home/" class="logo"><img src="{% static 'logo3.png' %}" alt="" class="logo"></a>
     <ul class="boardlists">
       <li><a href="#" class="boardlist">일반 게시판</a></li>
       <li><a href="#" class="boardlist">코드공유 게시판</a></li>
@@ -31,34 +31,44 @@
       </div>
       <div id="profile-layer">
         <div class="layer-inner">
-        <div id="clickbox2">
-          <div class="user-box">
-            <span>{{ user.student.number }}</span>
-            <span><em>{{ user.last_name }}{{ user.first_name }}</em>님</span>
+          <div id="clickbox2">
+            <div class="user-box">
+              <span>{{ user.student.number }}</span>
+              <span><em>{{ user.last_name }}{{ user.first_name }}</em>님</span>
+            </div>
           </div>
+          <form action="{% url 'logout' %}" id="logout" method="POST">
+            {% csrf_token %}
+            <a href="{% url 'change_password' %}" class="change-pw">
+              <i class="icon-change-pw"></i>
+              <span>비밀번호 변경</span>
+            </a>
+            <button type="submit">
+              <i class="icon-logout"></i>
+              <span>로그아웃</span>
+            </button>
+          </form>
         </div>
-        <form action="{% url 'logout' %}" id="logout" method="POST">
-          {% csrf_token %} 
-          <a href="{% url 'change_password' %}" class="change-pw">
-            <i class="icon-change-pw"></i>
-            <span>비밀번호 변경</span>
-          </a>
-          <button type="submit">
-            <i class="icon-logout"></i>
-            <span>로그아웃</span>
-          </button>
-        </form>
       </div>
-      </div>
-
+      <div id="hamburger">
+      <div class="hamburger-icon"></div>
+    </div>
     </div>
     <div class="links">
       <a href="http://edu.ssafy.com/" class="link edu"><span>EDU<br>SSAFY</span></a>
       <a href="https://lab.ssafy.com/" class="link lab"><span>LAB<br>SSAFY</span></a>
       <a href="http://job.ssafy.com/" class="link job"><span>JOB<br>SSAFY</span></a>
     </div>
-
   </nav>
+  <div id="dropdown-mobile">
+    <a href="#" class="dropdown-menu">일반 게시판</a>
+    <a href="#" class="dropdown-menu">코드공유 게시판</a>
+    <a href="#" class="dropdown-menu">커리큘럼</a>
+    <a href="#" class="dropdown-menu">식단표</a>
+    <a href="http://edu.ssafy.com/" class="dropdown-menu">EDU SSAFY</a>
+    <a href="https://lab.ssafy.com/" class="dropdown-menu">LAB SSAFY</a>
+    <a href="http://job.ssafy.com/" class="dropdown-menu">JOB SSAFY</a>
+  </div>
 
 
   {% block contents %}
@@ -67,5 +77,8 @@
   <a href="{% url 'login' %}">로그인이 필요한 페이지입니다.</a>
   {% endif %}
   </body>
-<script src="{% static 'base.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <script src="{% static 'base.js' %}"></script>
+
 </html>

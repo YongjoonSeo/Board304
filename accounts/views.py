@@ -22,7 +22,9 @@ def login(request):
         else:
             messages.error(request, '가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.')
         return render(request, 'accounts/login.html')
-
+    
+    if request.user.is_authenticated:
+        return redirect('home')
     return render(request, 'accounts/login.html')
 
 def logout(request):
