@@ -9,13 +9,19 @@
   {% block title %}
   {% endblock %}
   <link rel="stylesheet" href="{% static 'base.css' %}">
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicons.ico' %}"> </head> <body>
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicons.ico' %}">
+  {% block css %}
+  {% endblock %}
+</head>
+
+<body>
+
   {% if user.is_authenticated %}
 
   <nav class="topnav">
     <a href="/home/" class="logo"><img src="{% static 'logo3.png' %}" alt="" class="logo"></a>
     <ul class="boardlists">
-      <li><a href="{% url 'post_list' %}" class="boardlist">일반 게시판</a></li>
+      <li><a href="{% url 'normalboard:index' %}" class="boardlist">일반 게시판</a></li>
       <li><a href="#" class="boardlist">코드공유 게시판</a></li>
       <li><a href="#" class="boardlist">커리큘럼</a></li>
       <li><a href="#" class="boardlist">식단표</a></li>
@@ -51,8 +57,8 @@
         </div>
       </div>
       <div id="hamburger">
-      <div class="hamburger-icon"></div>
-    </div>
+        <div class="hamburger-icon"></div>
+      </div>
     </div>
     <div class="links">
       <a href="http://edu.ssafy.com/" class="link edu"><span>EDU<br>SSAFY</span></a>
@@ -61,7 +67,7 @@
     </div>
   </nav>
   <div id="dropdown-mobile">
-    <a href="{% url 'post_list' %}" class="dropdown-menu">일반 게시판</a>
+    <a href="{% url 'normalboard:index' %}" class="dropdown-menu">일반 게시판</a>
     <a href="#" class="dropdown-menu">코드공유 게시판</a>
     <a href="#" class="dropdown-menu">커리큘럼</a>
     <a href="#" class="dropdown-menu">식단표</a>
@@ -70,15 +76,21 @@
     <a href="http://job.ssafy.com/" class="dropdown-menu">JOB SSAFY</a>
   </div>
 
-
-  {% block contents %}
-  {% endblock %}
+  <div class="container">
+    {% block contents %}
+    {% endblock %}
+  </div>
   {% else %}
   <a href="{% url 'login' %}">로그인이 필요한 페이지입니다.</a>
   {% endif %}
-  </body>
-  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
-  <script src="{% static 'base.js' %}"></script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="{% static 'base.js' %}"></script>
+{% block script %}
+{% endblock %}
 
 </html>

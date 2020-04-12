@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR|Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.ui-dialog {
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 20px 30px;
+}
+
+.ui-dialog-title {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.ui-dialog-buttonset {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.ui-dialog-buttonset button {
+    height: 2rem;
+    width: 35%;
+}
+
+.ui-dialog-content input {
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0 15px;
+}
+
+#updateform label, #deleteform label, input {
+    display: block;
+    width: 100%;
+    line-height: 30px;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    margin: 0 15px;
+}
+
+button.admit {
+    background-color: #3C90E2;
+    border-color: #3C90E2;
+}
+
+button.cancel {
+    background-color: #4F5A66;
+    border-color: #4F5A66;
+}

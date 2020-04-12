@@ -1,0 +1,13 @@
+@media only screen and (min-width: 768px) {
+    .new-btn {
+        min-width: 100px;
+        height: 34px;
+    }
+}
+
+.new-btn {
+    background-color: #3c90e2;
+    border-color: #3c90e2;
+    min-width: 65px;
+    height: 30px;
+}

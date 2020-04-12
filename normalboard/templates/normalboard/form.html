@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if request.resolver_match.url_name == 'create' %}
+<title>일반 게시판 새 글 작성</title>
+{% else %}
+<title>글 수정 - {{ post.title }}</title>
+{% endif %}
+{% endblock %}
+
+{% block contents %}
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %}
+<script>
+  alert('{{ message }}')
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="작성완료">
+</form>
+{% endblock %}

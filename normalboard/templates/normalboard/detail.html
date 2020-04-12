@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{ post.title }} - 일반 게시판</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'detail.css' %}">
+{% endblock %}
+
+{% block contents %}
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %}
+<script>
+  alert('{{ message }}')
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+
+<p>{{ post.content }}</p>
+<p>{{ post.created_at }} 작성 {{ post.updated_at }} 수정</p>
+
+<button id="updatebtn">글 수정하기</button>
+<button id="deletebtn">글 삭제하기</button>
+<a href="{% url 'normalboard:index' %}">목록으로</a>
+
+<div id="updatebox">
+  <form action="{% url 'normalboard:update' post.pk %}" id="updateform">
+    <label for="password">글 비밀번호 </label>
+    <input type="password" name="password" id="password">
+  </form>
+</div>
+
+<div id="deletebox">
+  <form action="{% url 'normalboard:delete' post.pk %}" method="POST" id="deleteform">
+    {% csrf_token %}
+    <label for="password">글 비밀번호 </label>
+    <input type="password" name="password" id="password">
+  </form>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'detail.js' %}"></script>
+{% endblock %}
