@@ -4,10 +4,15 @@
   box-sizing: border-box;
 }
 
+/* html {
+  
+} */
+
 body {
   margin: 0;
   background-color: #F5F5F5;
-  font-family: 'Noto Sans KR', 'Roboto', 'Nanum Gothic', sans-serif;
+  font-size: 16px !important;
+  font-family: 'Noto Sans KR', 'Roboto', 'Nanum Gothic', sans-serif !important;
 }
 
 /* navbar starts */
@@ -315,5 +320,6 @@ a {
 
 .container {
   width: 80%;
+  max-width: 1000px;
   margin: 3rem auto;
 }

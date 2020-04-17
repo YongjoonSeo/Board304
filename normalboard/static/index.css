@@ -11,3 +11,126 @@
     min-width: 65px;
     height: 30px;
 }
+
+.normalboard-titlebox {
+    width: 100%;
+    background-image: url('bulletin board.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.boardtitle {
+    margin-top: 0;
+    line-height: 150px;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+}
+
+.btn,
+.btn a {
+    color: white;
+}
+
+.btn-block {
+    text-align: end;
+}
+
+.boardheader {
+    display: none;
+}
+
+.absolute {
+    position: absolute;
+}
+
+@media only screen and (min-width: 768px) {
+    .boardheader {
+        display: flex;
+        position: relative;
+        border-top: 2px solid black;
+        margin-top: 20px;
+        font-size: 1.15rem;
+        line-height: 4rem;
+    }
+
+    .boardheader::after {
+        content: "content";
+        display: block;
+        visibility: hidden;
+    }
+
+    .boardheader-number {
+        width: 10%;
+        left: 3%;
+    }
+
+    .boardheader-title {
+        width: 50%;
+        left: 13%;
+    }
+
+    .boardheader-author {
+        width: 12%;
+        left: 63%;
+    }
+
+    .boardheader-date {
+        width: 12%;
+        left: 75%;
+    }
+    
+    .boardheader-hit {
+        width: 10%;
+        left: 87%;
+    }
+
+    .element {
+        text-align: center;
+    }
+
+    .boardcontent {
+        display: flex;
+        position: relative;
+        font-size: 1.15rem;
+        margin: 0.7rem 0;
+        line-height: 1.6rem;
+    }
+
+    .boardcontent::after {
+        content: "content";
+        display: block;
+        visibility: hidden;
+    }
+
+    .boardcontent-number {
+        width: 10%;
+        left: 3%;
+    }
+
+    .boardcontent-title {
+        width: 50%;
+        left: 13%;
+        padding-left: 2rem;
+    }
+
+    .boardcontent-author {
+        width: 12%;
+        left: 63%;
+    }
+
+    .boardcontent-date {
+        width: 12%;
+        left: 75%;
+    }
+    
+    .boardcontent-hit {
+        width: 10%;
+        left: 87%;
+    }
+}
+
+.boardline {
+    margin: 0;
+}

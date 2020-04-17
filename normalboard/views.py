@@ -5,7 +5,7 @@ from .forms import PostForm
 
 # Create your views here.
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.order_by('-pk')
     context = {
         'posts': posts,
     }

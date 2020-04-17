@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load martortags %}
 
 {% block title %}
 <title>{{ post.title }} - 일반 게시판</title>
@@ -21,8 +22,9 @@
 {% endif %}
 
 
-<p>{{ post.content }}</p>
-<p>{{ post.created_at }} 작성 {{ post.updated_at }} 수정</p>
+{{ post.content|safe_markdown }}
+<!-- <p>{{ post.content }}</p>
+<p>{{ post.created_at }} 작성 {{ post.updated_at }} 수정</p> -->
 
 <button id="updatebtn">글 수정하기</button>
 <button id="deletebtn">글 삭제하기</button>

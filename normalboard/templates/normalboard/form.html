@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 {% if request.resolver_match.url_name == 'create' %}
@@ -6,6 +7,14 @@
 {% else %}
 <title>글 수정 - {{ post.title }}</title>
 {% endif %}
+{% endblock %}
+
+{% block css %}
+<link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+<!-- <link href="{% static 'plugins/css/semantic.min.css' %}" type="text/css" media="all" rel="stylesheet" /> -->
+<link href="{% static 'plugins/css/resizable.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+<link href="{% static 'martor/css/martor.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'form.css' %}">
 {% endblock %}
 
 {% block contents %}
@@ -18,9 +27,32 @@
 {% endif %}
 {% endfor %}
 {% endif %}
+
+{% if request.resolver_match.url_name == 'create' %}
+<h1>새 글 쓰기</h1>
+{% else %}
+<h1>글 수정하기 - {{ post.title }}</h1>
+{% endif %}
+
 <form action="" method="POST">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="작성완료">
 </form>
+<button><a href="{% url 'normalboard:index' %}">목록으로</a></button>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'plugins/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/semantic.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/typo.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/spellcheck.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'martor/js/martor.min.js' %}"></script>
 {% endblock %}

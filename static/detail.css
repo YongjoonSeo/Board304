@@ -12,6 +12,7 @@
     border: 2px solid black;
     border-radius: 4px;
     padding: 20px 30px;
+    background-color: #F5F5F5;
 }
 
 .ui-dialog-title {
@@ -43,7 +44,7 @@
     line-height: 30px;
 }
 
-button {
+#updatebtn, #deletebtn {
     cursor: pointer;
     color: white;
     margin: 0 15px;
@@ -52,9 +53,11 @@ button {
 button.admit {
     background-color: #3C90E2;
     border-color: #3C90E2;
+    margin: 0 15px;
 }
 
 button.cancel {
     background-color: #4F5A66;
     border-color: #4F5A66;
+    margin: 0 15px;
 }
