@@ -47,7 +47,26 @@
 #updatebtn, #deletebtn {
     cursor: pointer;
     color: white;
-    margin: 0 15px;
+    margin: 0 10px;
+    border: none;
+    min-width: 100px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+}
+
+#updatebtn {
+    background-color: #3C90E2;
+}
+
+#deletebtn {
+    background-color: #4F5A66;
+}
+
+.btnbox {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
 }
 
 button.admit {
@@ -64,4 +83,46 @@ button.cancel {
     margin: 0 15px;
     color: white;
     font-size: 14px;
+}
+
+.content {
+    background-color: white;
+    padding: 2rem;
+}
+
+.detailtitle {
+    padding-left: 1rem;
+}
+
+.authordata, .datedata {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-top: 0;
+    color: grey;
+}
+
+.datedata {
+    margin-left: 0.7rem;
+}
+
+.seperate {
+    display: inline-block;
+    margin-left: 0.7rem;
+    width: 1px;
+    height: 10px;
+    background-color: grey;
+}
+
+.tolist {
+    background-color: #3C90E2;
+    border: none;
+    width: 134px;
+    height: 45px;
+    line-height: 45px;
+    margin: 3rem auto;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
 }

@@ -22,16 +22,24 @@
 {% endfor %}
 {% endif %}
 
-<h1>{{ post.title }}</h1>
+<h2 class="detailtitle">{{ post.title }}</h2>
+<div class="postdata">
+  <h5 class="authordata">{{ post.author }}</h5>
+  <div class="seperate"></div>
+  <h5 class="datedata">{{ post.created_at|date:'Y.m.d H:i' }}</h5>
+</div>
 <hr>
-<h3>{{ post.author.first_name }}</h3>
-{{ post.content|safe_markdown }}
+<div class="content">
+  {{ post.content|safe_markdown }}
+</div>
 
-
-
-<button id="updatebtn">글 수정하기</button>
-<button id="deletebtn">글 삭제하기</button>
-<a href="{% url 'normalboard:index' %}">목록으로</a>
+{% if request.user == post.author %}
+<div class="btnbox">
+<button id="updatebtn">수정</button>
+<button id="deletebtn">삭제</button>
+</div>
+{% endif %}
+<a href="{% url 'normalboard:index' %}" class="tolist">목록</a>
 
 <div id="updatebox">
   <form action="{% url 'normalboard:edit' post.pk %}" id="updateform" method="POST">
@@ -55,5 +63,7 @@
 {% block script %}
 <script src="{% static 'detail.js' %}"></script>
 <script src="{% static 'highlight.pack.js' %}"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
 {% endblock %}

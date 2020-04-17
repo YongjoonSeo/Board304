@@ -21,7 +21,6 @@
 .btn {
     min-width: 120px;
     height: 50px;
-    line-height: 40px;
     cursor: pointer;
 }
 
@@ -32,18 +31,18 @@
     color: white;
     font-size: 14px;
     font-weight: 600;
+    line-height: 40px;
 }
 
 .cancel {
     background-color: #4F5A66;
     border: none;
     margin: 0 15px;
-}
-
-.cancel a {
     color: white;
     font-size: 14px;
     font-weight: 600;
+    text-align: center;
+    line-height: 50px;
 }
 
 .flex {
@@ -56,4 +55,8 @@
 
 .btnbox {
     margin-top: 3rem;
+}
+
+.cancel:hover {
+    color: white;
 }

@@ -45,9 +45,9 @@
     <div class="flex justify-center btnbox">
       <input type="submit" value="등록" class="btn admit">
       {% if request.resolver_match.url_name == 'create' %}
-      <button type="button" class="btn cancel"><a href="{% url 'normalboard:index' %}">취소</a></button>
+      <a href="{% url 'normalboard:index' %}" class="btn cancel">취소</a>
       {% else %}
-      <button type="button" class="btn cancel"><a href="{% url 'normalboard:detail' post.pk %}">취소</a></button>
+      <a href="{% url 'normalboard:detail' post.pk %}" class="btn cancel">취소</a>
       {% endif %}
 
     </div>
