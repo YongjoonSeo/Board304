@@ -54,10 +54,14 @@ button.admit {
     background-color: #3C90E2;
     border-color: #3C90E2;
     margin: 0 15px;
+    color: white;
+    font-size: 14px;
 }
 
 button.cancel {
     background-color: #4F5A66;
     border-color: #4F5A66;
     margin: 0 15px;
+    color: white;
+    font-size: 14px;
 }

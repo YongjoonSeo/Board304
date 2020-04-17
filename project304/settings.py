@@ -188,4 +188,3 @@ MARTOR_SEARCH_USERS_URL = '/martor/search-user/' # default
 # MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://www.webfx.com/tools/emoji-cheat-sheet/graphics/emojis/'     # from webfx
 MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://github.githubassets.com/images/icons/emoji/'                  # default from github
 MARTOR_MARKDOWN_BASE_MENTION_URL = 'http://127.0.0.1:8000'                                      # please change this to your domain
-CSRF_COOKIE_HTTPONLY = False

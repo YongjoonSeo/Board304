@@ -4,14 +4,15 @@
   box-sizing: border-box;
 }
 
-/* html {
-  
-} */
-
 body {
   margin: 0;
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 !important;
   font-size: 16px !important;
+  font-family: 'Noto Sans KR', 'Roboto', 'Nanum Gothic', sans-serif !important;
+  line-height: normal !important;
+}
+
+button, input {
   font-family: 'Noto Sans KR', 'Roboto', 'Nanum Gothic', sans-serif !important;
 }
 
@@ -38,6 +39,7 @@ a {
 
 .topnav .boardlist {
   height: 40px;
+  color: black;
 }
 
 .logo {
@@ -114,6 +116,7 @@ a {
   font-size: 13px;
   height: auto;
   margin: 36px auto 20px;
+  color: black;
 }
 
 #logout .icon-change-pw {

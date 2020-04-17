@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('basic.urls')),
     path('', include('accounts.urls')),
     path('community/', include('normalboard.urls')),
+    path('martor/', include('martor.urls')),
 ]

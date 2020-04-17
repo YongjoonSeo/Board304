@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from .models import Post
 from .forms import PostForm
@@ -32,6 +33,23 @@ def detail(request, pk):
     }
     return render(request, 'normalboard/detail.html', context)
 
+def edit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    data = {
+        'title': post.title,
+        'content': post.content,
+    }
+    form = PostForm(data)
+    context = {
+        'form': form,
+        'post': post,
+    }
+    if request.POST.get('password') != post.password:
+        messages.error(request, '글 비밀번호가 일치하지 않습니다.')
+        return redirect('normalboard:detail', post.pk)
+    return render(request, 'normalboard/form.html', context)
+
+@require_POST
 def update(request, pk):
     post = get_object_or_404(Post, pk=pk)
     data = {
@@ -49,11 +67,11 @@ def update(request, pk):
                 messages.error(request, '글 비밀번호가 일치하지 않습니다.')
         else:
             messages.error(request, '제출 양식이 올바르지 않습니다.')
-    else:
-        if request.GET.get('password') != post.password:
-            messages.error(request, '글 비밀번호가 일치하지 않습니다.')
-            return redirect('normalboard:detail', post.pk)
-        form = PostForm(data)
+    # else:
+    #     if request.GET.get('password') != post.password:
+    #         messages.error(request, '글 비밀번호가 일치하지 않습니다.')
+    #         return redirect('normalboard:detail', post.pk)
+        # form = PostForm(data)
     context = {
         'form': form,
         'post': post,

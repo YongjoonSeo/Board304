@@ -25,11 +25,11 @@ class PostForm(forms.ModelForm):
     # )
     content = MartorFormField()
     password = forms.CharField(
-        label='글 비밀번호',
+        label='글 비밀번호 설정',
         label_suffix='',
         widget=forms.PasswordInput(
             attrs = {
-                'class': 'form',
+                'class': 'form password-form',
             }
         )
     )

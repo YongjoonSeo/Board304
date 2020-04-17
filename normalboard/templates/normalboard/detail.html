@@ -31,7 +31,8 @@
 <a href="{% url 'normalboard:index' %}">목록으로</a>
 
 <div id="updatebox">
-  <form action="{% url 'normalboard:update' post.pk %}" id="updateform">
+  <form action="{% url 'normalboard:edit' post.pk %}" id="updateform" method="POST">
+    {% csrf_token %}
     <label for="password">글 비밀번호 </label>
     <input type="password" name="password" id="password">
   </form>
