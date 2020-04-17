@@ -16,7 +16,9 @@ def create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
             messages.success(request, '글 작성이 완료되었습니다.')
             return redirect('normalboard:detail', post.pk)
     else:

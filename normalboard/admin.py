@@ -8,6 +8,7 @@ from martor.widgets import AdminMartorWidget
 #     list_display = ('pk', 'title', 'content', 'created_at', 'updated_at')
 
 class PostAdmin(admin.ModelAdmin):
+    list_display = ('pk', 'title', 'content', 'created_at', 'updated_at')
     formfield_overrides = {
         models.TextField: {
             'widget': AdminMartorWidget

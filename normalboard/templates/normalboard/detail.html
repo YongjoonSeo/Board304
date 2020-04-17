@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'atom-one-dark.css' %}">
 <link rel="stylesheet" href="{% static 'detail.css' %}">
 {% endblock %}
 
@@ -21,10 +22,12 @@
 {% endfor %}
 {% endif %}
 
-
+<h1>{{ post.title }}</h1>
+<hr>
+<h3>{{ post.author.first_name }}</h3>
 {{ post.content|safe_markdown }}
-<!-- <p>{{ post.content }}</p>
-<p>{{ post.created_at }} 작성 {{ post.updated_at }} 수정</p> -->
+
+
 
 <button id="updatebtn">글 수정하기</button>
 <button id="deletebtn">글 삭제하기</button>
@@ -51,4 +54,6 @@
 
 {% block script %}
 <script src="{% static 'detail.js' %}"></script>
+<script src="{% static 'highlight.pack.js' %}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
