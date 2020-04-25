@@ -23,7 +23,7 @@
     <ul class="boardlists">
       <li><a href="{% url 'normalboard:index' %}" class="boardlist">일반 게시판</a></li>
       <li><a href="{% url 'codeboard:index' %}" class="boardlist">코드공유 게시판</a></li>
-      <li><a href="#" class="boardlist">질문 게시판</a></li>
+      <li><a href="{% url 'questionboard:index' %}" class="boardlist">질문 게시판</a></li>
       <li><a href="{% url 'meal' %}" class="boardlist">식단표</a></li>
     </ul>
     <div class="profile-area">
@@ -69,7 +69,7 @@
   <div id="dropdown-mobile">
     <a href="{% url 'normalboard:index' %}" class="dropdown-menu">일반 게시판</a>
     <a href="{% url 'codeboard:index' %}" class="dropdown-menu">코드공유 게시판</a>
-    <a href="#" class="dropdown-menu">질문 게시판</a>
+    <a href="{% url 'questionboard:index' %}" class="dropdown-menu">질문 게시판</a>
     <a href="{% url 'meal' %}" class="dropdown-menu">식단표</a>
     <a href="http://edu.ssafy.com/" class="dropdown-menu">EDU SSAFY</a>
     <a href="https://lab.ssafy.com/" class="dropdown-menu">LAB SSAFY</a>

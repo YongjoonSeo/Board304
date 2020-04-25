@@ -23,4 +23,5 @@ urlpatterns = [
     path('community/', include('normalboard.urls')),
     path('martor/', include('martor.urls')),
     path('code/', include('codeboard.urls')),
+    path('question/', include('questionboard.urls')),
 ]

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load martortags %}
+
+{% block title %}
+<title>{{ qpost.title }} - 질문 게시판</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'monokai-sublime.css' %}">
+<link rel="stylesheet" href="{% static 'detail.css' %}">
+{% endblock %}
+
+{% block contents %}
+
+<h2 class="detailtitle">{{ qpost.title }}</h2>
+<div class="postdata">
+  <h5 class="authordata">{{ qpost.author }}</h5>
+  <div class="seperate"></div>
+  <h5 class="datedata">{{ qpost.created_at|date:'Y.m.d H:i' }}</h5>
+</div>
+<hr>
+<div class="content">
+  {{ qpost.content|safe_markdown }}
+</div>
+<hr>
+
+<p class="commentnum-infobox">총 <span class="commentnum-info">{{ qpost.qcomment_set.all|length }}</span>건의 댓글이 있습니다.</p>
+<hr>
+
+<h3 class="comment-write">댓글쓰기</h3>
+<form action="{% url 'questionboard:create_comments' qpost.pk %}" method="POST" class="commentform">
+  {% csrf_token %}
+  {{ commentform }}
+  <button class="commentbtn btn-responsive comment-create">등록</button>
+</form>
+<hr>
+
+<div class="comments">
+  {% for comment in comments %}
+  <div class="commentbox">
+    <div class="comment-metadata">
+    <div class="comment-profile">
+      <span class="comment-username">{{ comment.user.last_name }}{{ comment.user.first_name }}</span>
+      <div class="seperate"></div>
+      <h5 class="datedata comment-date">{{ comment.created_at|date:'Y.m.d H:i' }}</h5>
+    </div>
+    {% if comment.user == request.user %}
+    <form action="{% url 'questionboard:delete_comments' qpost.pk comment.pk %}" method="POST">
+      {% csrf_token %}
+      <button class="commentbtn btn-responsive comment-delete">삭제</button>
+    </form>
+    {% endif %}
+  </div>
+    <p>{{ comment.content }}</p>
+  </div>
+  <hr>
+  {% endfor %}
+</div>
+
+
+
+
+
+{% if request.user == qpost.author %}
+<div class="btnbox">
+  <button id="updatebtn">수정</button>
+  <button id="deletebtn">삭제</button>
+</div>
+{% endif %}
+<a href="{% url 'questionboard:index' %}" class="tolist">목록</a>
+
+<div id="updatebox">
+  <form action="{% url 'questionboard:edit' qpost.pk %}" id="updateform" method="POST">
+    {% csrf_token %}
+    <label for="password">글 비밀번호 </label>
+    <input type="password" name="password" id="password">
+  </form>
+</div>
+
+<div id="deletebox">
+  <form action="{% url 'questionboard:delete' qpost.pk %}" method="POST" id="deleteform">
+    {% csrf_token %}
+    <label for="password">글 비밀번호 </label>
+    <input type="password" name="password" id="password">
+  </form>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'detail.js' %}"></script>
+<script src="{% static 'highlight.pack.js' %}"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+{% endblock %}

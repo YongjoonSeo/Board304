@@ -27,6 +27,10 @@
     background-image: url('computer code.png');
 }
 
+.questionboard-titlebox {
+    background-image: url('questionmark.jpg');
+}
+
 .boardtitle {
     margin-top: 0;
     line-height: 150px;
