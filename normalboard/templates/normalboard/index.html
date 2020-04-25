@@ -40,7 +40,8 @@
 
 {% for post in page_obj %}
 <a href="{% url 'normalboard:detail' post.pk %}">
-  <h3 class="block-small contenttitle">{{ post.title }}</h3>
+  <h3 class="block-small contenttitle">{{ post.title }}  <span
+      class="numofcomments inline-small">[{{ post.comment_set.all|length }}]</span></h3>
   <div class="postinfo flex-small">
     <div class="post-profile block-small">
       <span class="inline-small postauthor">{{ post.author.last_name }}{{ post.author.first_name }}</span>
