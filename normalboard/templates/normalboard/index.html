@@ -28,29 +28,29 @@
 {% for post in page_obj %}
 <a href="{% url 'normalboard:detail' post.pk %}" class="boardcontent">
   <div class="boardcontent-number element absolute">{{ post.pk }}</div>
-  <div class="boardcontent-title absolute">{{ post.title }} <span class="numofcomments">[{{ post.comment_set.all|length }}]</span> </div>
+  <div class="boardcontent-title absolute">{{ post.title }} <span
+      class="numofcomments">[{{ post.comment_set.all|length }}]</span> </div>
   <div class="boardcontent-author element absolute">{{ post.author.last_name }}{{ post.author.first_name }}</div>
   <div class="boardcontent-date element absolute">{{ post.created_at|date:'Y.m.d' }}</div>
   <div class="boardcontent-hit element absolute">{{ post.hit }}</div>
 </a>
-<!-- <h1><a href="{% url 'normalboard:detail' post.pk %}">제목: {{ post.title }}</a></h1>
-<p>내용 : {{ post.content }}</p>
-<p>작성 시간: {{ post.created_at }}</p> -->
 <hr class="boardline">
 {% endfor %}
 
-{% if page_obj.has_previous %}
-  <a href="?page=1">처음</a>
-  <a href="?page={{ page_obj.previous_page_number }}">이전</a>
-{% endif %}
-<span>전체 페이지 {{ page_obj.paginator.num_pages }}개 중 {{ page_obj.number }}번째 페이지</span>
-{% if page_obj.has_next %}
-  <a href="?page={{ page_obj.next_page_number }}">다음</a>
-  <a href="?page={{ page_obj.paginator.num_pages }}">마지막</a>
-{% endif %}
+<div class="paginator">
+  {% if page_obj.has_previous %}
+  <a href="?page=1" class="paginator-item">처음 <<</a>
+  <a href="?page={{ page_obj.previous_page_number }}" class="paginator-item">이전 <</a>
+  {% endif %}
+  <span class="current">전체 페이지 {{ page_obj.paginator.num_pages }}개 중 {{ page_obj.number }}번째 페이지</span>
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}" class="paginator-item">> 다음</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}" class="paginator-item">>> 마지막</a>
+  {% endif %}
+</div>
 
-<form action="{% url 'normalboard:search' %}">
-  <input type="text" name="query" placeholder="글 제목을 입력하세요.">
-  <button>검색</button>
+<form action="{% url 'normalboard:search' %}" class="searchbox">
+  <input type="text" name="query" placeholder="글 제목을 입력하세요." class="searchinput">
+  <button class="searchbtn">검색</button>
 </form>
 {% endblock %}
