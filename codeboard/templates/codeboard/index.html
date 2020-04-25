@@ -43,7 +43,7 @@
   <h3 class="block-small contenttitle">{{ codepost.title }}</h3>
   <div class="postinfo flex-small">
     <div class="codepost-profile block-small">
-      <span class="inline-small postauthor">{{ codepost.author }}</span>
+      <span class="inline-small postauthor">{{ codepost.author.last_name }}{{ codepost.author.first_name }}</span>
       <div class="inline-small seperate"></div>
       <span class="inline-small postdate">{{ codepost.created_at|date:'y.m.d' }}</span>
     </div>
