@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def index(request):
     posts = Post.objects.order_by('-pk')
     context = {
@@ -12,6 +14,7 @@ def index(request):
     }
     return render(request, 'normalboard/index.html', context)
 
+@login_required
 def create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -28,13 +31,19 @@ def create(request):
     }
     return render(request, 'normalboard/form.html', context)
 
+@login_required
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    commentform = CommentForm()
+    comments = post.comment_set.all()
     context = {
         'post': post,
+        'commentform': commentform,
+        'comments': comments,
     }
     return render(request, 'normalboard/detail.html', context)
 
+@login_required
 def edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     data = {
@@ -51,6 +60,7 @@ def edit(request, pk):
         return redirect('normalboard:detail', post.pk)
     return render(request, 'normalboard/form.html', context)
 
+@login_required
 @require_POST
 def update(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -69,17 +79,13 @@ def update(request, pk):
                 messages.error(request, '글 비밀번호가 일치하지 않습니다.')
         else:
             messages.error(request, '제출 양식이 올바르지 않습니다.')
-    # else:
-    #     if request.GET.get('password') != post.password:
-    #         messages.error(request, '글 비밀번호가 일치하지 않습니다.')
-    #         return redirect('normalboard:detail', post.pk)
-        # form = PostForm(data)
     context = {
         'form': form,
         'post': post,
     }
     return render(request, 'normalboard/form.html', context)
 
+@login_required
 def delete(request, pk): 
     post = get_object_or_404(Post, pk=pk)
     if request.method == 'POST':
@@ -95,4 +101,26 @@ def delete(request, pk):
     }
     return render(request, 'normalboard/detail.html', context)
 
+@login_required
+@require_POST
+def create_comments(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.user = request.user
+        comment.post = post
+        form.save()
+        messages.success(request, '댓글이 등록되었습니다.')
+    else:
+        messages.error(request, '내용을 입력해 주십시오.')
+    return redirect('normalboard:detail', pk)
+
+@login_required
+@require_POST
+def delete_comments(request, pk, comment_pk):
+    comment = get_object_or_404(Comment, pk=comment_pk)
+    comment.delete()
+    messages.success(request, '댓글이 삭제되었습니다.')
+    return redirect('normalboard:detail', pk)
 

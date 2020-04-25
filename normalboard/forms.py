@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 from martor.fields import MartorFormField
 
 class PostForm(forms.ModelForm):
@@ -13,16 +13,6 @@ class PostForm(forms.ModelForm):
             }
         )
     )
-    # content = forms.CharField(
-    #     label='내용',
-    #     label_suffix='',
-    #     widget=forms.Textarea(
-    #         attrs = {
-    #             'placeholder':'글 내용을 입력하세요.',
-    #             'class': 'form',
-    #         }
-    #     )
-    # )
     content = MartorFormField()
     password = forms.CharField(
         label='글 비밀번호 설정',
@@ -37,3 +27,16 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'content', 'password']
 
+class CommentForm(forms.ModelForm):
+    content = forms.CharField(
+        label='',
+        label_suffix='',
+        widget=forms.TextInput(
+            attrs = {
+                'placeholder': '댓글을 입력하세요.',
+            }
+        )
+    )
+    class Meta:
+        model = Comment
+        fields = ['content']

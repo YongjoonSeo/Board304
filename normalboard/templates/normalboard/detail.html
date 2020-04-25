@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'atom-one-dark.css' %}">
+<link rel="stylesheet" href="{% static 'monokai-sublime.css' %}">
 <link rel="stylesheet" href="{% static 'detail.css' %}">
 {% endblock %}
 
@@ -31,6 +31,17 @@
 <hr>
 <div class="content">
   {{ post.content|safe_markdown }}
+</div>
+<form action="{% url 'normalboard:create_comments' post.pk %}" method="POST">
+  {% csrf_token %}
+  {{ commentform.as_p }}
+  <button>댓글쓰기</button>
+</form>
+
+<div class="comments">
+  {% for comment in comments %}
+  <p>{{ comment.content }}</p>
+  {% endfor %}
 </div>
 
 {% if request.user == post.author %}
