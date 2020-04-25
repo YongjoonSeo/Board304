@@ -2,18 +2,18 @@
 {% load static %}
 
 {% block title %}
-<title>SSAFY304 일반 게시판</title>
+<title>SSAFY304 코드공유 게시판</title>
 {% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'index.css' %}">
 {% endblock %}
 
 {% block contents %}
-<div class="boardtitlebox normalboard-titlebox">
-  <h1 class="boardtitle">일반 게시판</h1>
+<div class="boardtitlebox codeboard-titlebox">
+  <h1 class="boardtitle">코드공유 게시판</h1>
 </div>
 <div class="btn-block">
-  <button class="btn new-btn"><a href="{% url 'normalboard:create' %}">글쓰기</a></button>
+  <button class="btn new-btn"><a href="{% url 'codeboard:create' %}">글쓰기</a></button>
 </div>
 
 <div class="boardheader flex-big">
@@ -25,31 +25,31 @@
 </div>
 <hr class="boardline block-big">
 
-{% for post in page_obj %}
-<a href="{% url 'normalboard:detail' post.pk %}" class="boardcontent flex-big">
-  <div class="boardcontent-number block-big element absolute">{{ post.pk }}</div>
-  <div class="boardcontent-title block-big absolute">{{ post.title }} <span
-      class="numofcomments inline-big">[{{ post.comment_set.all|length }}]</span> </div>
-  <div class="boardcontent-author block-big element absolute">{{ post.author.last_name }}{{ post.author.first_name }}
+{% for codepost in page_obj %}
+<a href="{% url 'codeboard:detail' codepost.pk %}" class="boardcontent flex-big">
+  <div class="boardcontent-number block-big element absolute">{{ codepost.pk }}</div>
+  <div class="boardcontent-title block-big absolute">{{ codepost.title }} <span
+      class="numofcomments inline-big">[{{ codepost.codecomment_set.all|length }}]</span> </div>
+  <div class="boardcontent-author block-big element absolute">{{ codepost.author.last_name }}{{ codepost.author.first_name }}
   </div>
-  <div class="boardcontent-date block-big element absolute">{{ post.created_at|date:'Y.m.d' }}</div>
-  <div class="boardcontent-hit block-big element absolute">{{ post.hit }}</div>
+  <div class="boardcontent-date block-big element absolute">{{ codepost.created_at|date:'Y.m.d' }}</div>
+  <div class="boardcontent-hit block-big element absolute">{{ codepost.hit }}</div>
 </a>
 <hr class="boardline block-big">
 {% endfor %}
 
-{% for post in page_obj %}
-<a href="{% url 'normalboard:detail' post.pk %}">
-  <h3 class="block-small contenttitle">{{ post.title }}</h3>
+{% for codepost in page_obj %}
+<a href="{% url 'codeboard:detail' codepost.pk %}">
+  <h3 class="block-small contenttitle">{{ codepost.title }}</h3>
   <div class="postinfo flex-small">
-    <div class="post-profile block-small">
-      <span class="inline-small postauthor">{{ post.author }}</span>
+    <div class="codepost-profile block-small">
+      <span class="inline-small postauthor">{{ codepost.author }}</span>
       <div class="inline-small seperate"></div>
-      <span class="inline-small postdate">{{ post.created_at|date:'y.m.d' }}</span>
+      <span class="inline-small postdate">{{ codepost.created_at|date:'y.m.d' }}</span>
     </div>
     <div class="hitbox block-small">
     <img src="{% static 'icon_eye.png' %}" alt="조회수아이콘" class="hiticon-small inline-small">
-    <span class="inline-small posthit">{{ post.hit }}</span>
+    <span class="inline-small posthit">{{ codepost.hit }}</span>
   </div>
   </div>
 </a>
@@ -71,7 +71,7 @@
   {% endif %}
 </div>
 
-<form action="{% url 'normalboard:search' %}" class="searchbox">
+<form action="{% url 'codeboard:search' %}" class="searchbox">
   <input type="text" name="query" placeholder="글 제목 입력" class="searchinput">
   <button class="searchbtn">검색</button>
 </form>

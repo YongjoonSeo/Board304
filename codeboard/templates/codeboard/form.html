@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{% if request.resolver_match.url_name == 'create' %}
+<title>코드공유 게시판 새 글 작성</title>
+{% else %}
+<title>글 수정 - {{ codepost.title }}</title>
+{% endif %}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<link href="{% static 'plugins/css/ace.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+<link href="{% static 'plugins/css/semantic.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+<link href="{% static 'plugins/css/resizable.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+<link href="{% static 'martor/css/martor.min.css' %}" type="text/css" media="all" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+
+{% if request.resolver_match.url_name == 'create' %}
+<h1 class="menutitle">새 글 쓰기</h1>
+{% else %}
+<h1 class="menutitle">글 수정하기</h1>
+{% endif %}
+
+
+{% if request.resolver_match.url_name == 'create' %}
+<form action="" method="POST">
+  {% else %}
+  <form action="{% url 'codeboard:update' codepost.pk %}" method="POST">
+    {% endif %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="flex justify-center btnbox">
+      <input type="submit" value="등록" class="btn admit">
+      {% if request.resolver_match.url_name == 'create' %}
+      <a href="{% url 'codeboard:index' %}" class="btn cancel">취소</a>
+      {% else %}
+      <a href="{% url 'codeboard:detail' codepost.pk %}" class="btn cancel">취소</a>
+      {% endif %}
+
+    </div>
+  </form>
+
+  {% endblock %}
+
+  {% block script %}
+  <script type="text/javascript" src="{% static 'plugins/js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/ace.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/semantic.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/mode-markdown.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/ext-language_tools.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/theme-github.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/typo.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/spellcheck.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/highlight.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/resizable.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'plugins/js/emojis.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'martor/js/martor.min.js' %}"></script>
+  {% endblock %}

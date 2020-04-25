@@ -3,7 +3,7 @@
 {% load martortags %}
 
 {% block title %}
-<title>{{ post.title }} - 일반 게시판</title>
+<title>{{ codepost.title }} - 코드공유 게시판</title>
 {% endblock %}
 
 {% block css %}
@@ -13,25 +13,25 @@
 
 {% block contents %}
 
-<h2 class="detailtitle">{{ post.title }}</h2>
+<h2 class="detailtitle">{{ codepost.title }}</h2>
 <div class="postdata">
-  <h5 class="authordata">{{ post.author }}</h5>
+  <h5 class="authordata">{{ codepost.author }}</h5>
   <div class="seperate"></div>
-  <h5 class="datedata">{{ post.created_at|date:'Y.m.d H:i' }}</h5>
+  <h5 class="datedata">{{ codepost.created_at|date:'Y.m.d H:i' }}</h5>
 </div>
 <hr>
 <div class="content">
-  {{ post.content|safe_markdown }}
+  {{ codepost.content|safe_markdown }}
 </div>
 <hr>
 
-<p class="commentnum-infobox">총 <span class="commentnum-info">{{ post.comment_set.all|length }}</span>건의 댓글이 있습니다.</p>
+<p class="commentnum-infobox">총 <span class="commentnum-info">{{ codepost.codecomment_set.all|length }}</span>건의 댓글이 있습니다.</p>
 <hr>
 
 <h3 class="comment-write">댓글쓰기</h3>
-<form action="{% url 'normalboard:create_comments' post.pk %}" method="POST" class="commentform">
+<form action="{% url 'codeboard:create_comments' codepost.pk %}" method="POST" class="commentform">
   {% csrf_token %}
-  {{ commentform }}
+  {{ codecommentform }}
   <button class="commentbtn btn-responsive comment-create">등록</button>
 </form>
 <hr>
@@ -46,7 +46,7 @@
       <h5 class="datedata comment-date">{{ comment.created_at|date:'Y.m.d H:i' }}</h5>
     </div>
     {% if comment.user == request.user %}
-    <form action="{% url 'normalboard:delete_comments' post.pk comment.pk %}" method="POST">
+    <form action="{% url 'codeboard:delete_comments' codepost.pk comment.pk %}" method="POST">
       {% csrf_token %}
       <button class="commentbtn btn-responsive comment-delete">삭제</button>
     </form>
@@ -62,16 +62,16 @@
 
 
 
-{% if request.user == post.author %}
+{% if request.user == codepost.author %}
 <div class="btnbox">
   <button id="updatebtn">수정</button>
   <button id="deletebtn">삭제</button>
 </div>
 {% endif %}
-<a href="{% url 'normalboard:index' %}" class="tolist">목록</a>
+<a href="{% url 'codeboard:index' %}" class="tolist">목록</a>
 
 <div id="updatebox">
-  <form action="{% url 'normalboard:edit' post.pk %}" id="updateform" method="POST">
+  <form action="{% url 'codeboard:edit' codepost.pk %}" id="updateform" method="POST">
     {% csrf_token %}
     <label for="password">글 비밀번호 </label>
     <input type="password" name="password" id="password">
@@ -79,7 +79,7 @@
 </div>
 
 <div id="deletebox">
-  <form action="{% url 'normalboard:delete' post.pk %}" method="POST" id="deleteform">
+  <form action="{% url 'codeboard:delete' codepost.pk %}" method="POST" id="deleteform">
     {% csrf_token %}
     <label for="password">글 비밀번호 </label>
     <input type="password" name="password" id="password">

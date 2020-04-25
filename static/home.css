@@ -1,3 +1,12 @@
 .imgblock {
-    margin: 0 auto;
+    text-align: center;
+}
+
+.imgcaption {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.imgfile {
+    max-width: 100%;
 }

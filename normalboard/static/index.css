@@ -12,12 +12,19 @@
     height: 30px;
 }
 
-.normalboard-titlebox {
+.boardtitlebox {
     width: 100%;
-    background-image: url('bulletin board.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+}
+
+.normalboard-titlebox {
+    background-image: url('bulletin board.jpg');
+}
+
+.codeboard-titlebox {
+    background-image: url('computer code.png');
 }
 
 .boardtitle {

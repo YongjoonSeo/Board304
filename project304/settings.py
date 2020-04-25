@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'normalboard',
     'martor',
+    'codeboard',
 ]
 
 MIDDLEWARE = [
