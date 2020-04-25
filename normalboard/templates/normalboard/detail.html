@@ -32,7 +32,7 @@
 <form action="{% url 'normalboard:create_comments' post.pk %}" method="POST" class="commentform">
   {% csrf_token %}
   {{ commentform }}
-  <button class="commentbtn comment-create">등록</button>
+  <button class="commentbtn btn-responsive comment-create">등록</button>
 </form>
 <hr>
 
@@ -48,7 +48,7 @@
     {% if comment.user == request.user %}
     <form action="{% url 'normalboard:delete_comments' post.pk comment.pk %}" method="POST">
       {% csrf_token %}
-      <button class="commentbtn comment-delete">삭제</button>
+      <button class="commentbtn btn-responsive comment-delete">삭제</button>
     </form>
     {% endif %}
   </div>

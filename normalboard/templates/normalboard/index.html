@@ -39,18 +39,21 @@
 
 <div class="paginator">
   {% if page_obj.has_previous %}
-  <a href="?page=1" class="paginator-item">처음 <<</a>
-  <a href="?page={{ page_obj.previous_page_number }}" class="paginator-item">이전 <</a>
+  <a href="?page=1" class="paginator-item inline-big">처음 <<</a>
+  <a href="?page={{ page_obj.previous_page_number }}" class="paginator-item inline-big">이전 <</a>
+  <a href="?page={{ page_obj.previous_page_number }}" class="paginator-item inline-small">이전</a>
   {% endif %}
-  <span class="current">전체 페이지 {{ page_obj.paginator.num_pages }}개 중 {{ page_obj.number }}번째 페이지</span>
+  <span class="current inline-small">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+  <span class="current inline-big">전체 페이지 {{ page_obj.paginator.num_pages }}개 중 {{ page_obj.number }}번째 페이지</span>
   {% if page_obj.has_next %}
-  <a href="?page={{ page_obj.next_page_number }}" class="paginator-item">> 다음</a>
-  <a href="?page={{ page_obj.paginator.num_pages }}" class="paginator-item">>> 마지막</a>
+  <a href="?page={{ page_obj.next_page_number }}" class="paginator-item inline-big">> 다음</a>
+  <a href="?page={{ page_obj.next_page_number }}" class="paginator-item inline-small">다음</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}" class="paginator-item inline-big">>> 마지막</a>
   {% endif %}
 </div>
 
 <form action="{% url 'normalboard:search' %}" class="searchbox">
-  <input type="text" name="query" placeholder="글 제목을 입력하세요." class="searchinput">
+  <input type="text" name="query" placeholder="글 제목 입력" class="searchinput">
   <button class="searchbtn">검색</button>
 </form>
 {% endblock %}

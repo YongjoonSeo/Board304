@@ -34,7 +34,7 @@ class CommentForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs = {
                 'placeholder': '댓글을 입력하세요.',
-                'class': 'commentinput',
+                'class': 'commentinput input-responsive',
             }
         )
     )

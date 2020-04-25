@@ -45,6 +45,11 @@
     position: absolute;
 }
 
+.inline-big {
+    display: none;
+}
+
+
 @media only screen and (min-width: 768px) {
     .boardheader {
         display: flex;
@@ -128,6 +133,22 @@
     .boardcontent-hit {
         width: 10%;
         left: 87%;
+    }
+
+    .inline-small {
+        display: none;
+    }
+
+    .inline-big {
+        display: inline;
+    }
+
+    .block-small {
+        display: none;
+    }
+
+    .block-big {
+        display: block;
     }
 }
 
