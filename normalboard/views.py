@@ -5,6 +5,8 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from datetime import datetime
+from django.db.models import F
 
 # Create your views here.
 @login_required
@@ -40,12 +42,30 @@ def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     commentform = CommentForm()
     comments = post.comment_set.all()
+    if request.session.get('_auth_user_id'):
+        cookie_name = f'hit:{request.session["_auth_user_id"]}'
+    else:
+        cookie_name = 'hit'
+    tomorrow = datetime.replace(datetime.now(), hour=23, minute=59, second=0)
+    expires = datetime.strftime(tomorrow, "%a, %d-%b-%Y %H:%M:%S GMT")
     context = {
         'post': post,
         'commentform': commentform,
         'comments': comments,
     }
-    return render(request, 'normalboard/detail.html', context)
+    response = render(request, 'normalboard/detail.html', context)
+    if request.COOKIES.get(cookie_name) is not None:
+        cookies = request.COOKIES.get(cookie_name)
+        cookies_list = cookies.split('|')
+        if str(post.id) not in cookies_list:
+            response.set_cookie(cookie_name, cookies + f'|{post.id}', expires=expires)
+            post.hit = F('hit') + 1
+            post.save()
+    else:
+        response.set_cookie(cookie_name, post.id, expires=expires)
+        post.hit = F('hit') + 1
+        post.save()
+    return response
 
 @login_required
 def edit(request, pk):

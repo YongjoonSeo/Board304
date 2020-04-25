@@ -40,7 +40,7 @@
   <div class="boardcontent-title absolute">{{ post.title }}</div>
   <div class="boardcontent-author element absolute">{{ post.author.last_name }}{{ post.author.first_name }}</div>
   <div class="boardcontent-date element absolute">{{ post.created_at|date:'Y.m.d' }}</div>
-  <div class="boardcontent-hit element absolute"></div>
+  <div class="boardcontent-hit element absolute">{{ post.hit }}</div>
 </a>
 <!-- <h1><a href="{% url 'normalboard:detail' post.pk %}">제목: {{ post.title }}</a></h1>
 <p>내용 : {{ post.content }}</p>
