@@ -34,7 +34,7 @@
 </div>
 <hr class="boardline">
 
-{% for post in posts %}
+{% for post in page_obj %}
 <a href="{% url 'normalboard:detail' post.pk %}" class="boardcontent">
   <div class="boardcontent-number element absolute">{{ post.pk }}</div>
   <div class="boardcontent-title absolute">{{ post.title }}</div>
@@ -47,5 +47,15 @@
 <p>작성 시간: {{ post.created_at }}</p> -->
 <hr class="boardline">
 {% endfor %}
+
+{% if page_obj.has_previous %}
+  <a href="?page=1">처음</a>
+  <a href="?page={{ page_obj.previous_page_number }}">이전</a>
+{% endif %}
+<span>전체 페이지 {{ page_obj.paginator.num_pages }}개 중 {{ page_obj.number }}번째 페이지</span>
+{% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">다음</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}">마지막</a>
+{% endif %}
 
 {% endblock %}
