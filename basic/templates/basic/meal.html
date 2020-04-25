@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>식단표</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+
+{% block contents %}
+<h1 class="imgcaption">2월 3주차 식단표</h1>
+<div class="imgblock">
+  <img src="{% static 'meal/202002_3rd.png' %}" alt="2월 3주차 식단표" class="imgfile">
+</div>
+{% endblock %}
