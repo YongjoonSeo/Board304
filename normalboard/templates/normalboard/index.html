@@ -15,33 +15,52 @@
 <div class="btn-block">
   <button class="btn new-btn"><a href="{% url 'normalboard:create' %}">글쓰기</a></button>
 </div>
-<!-- 번호 제목 작성자 작성일 조회수 (댓글이랑 좋아요는 나중에 구현하면 제목쪽에 표시) -->
-<div class="boardheader">
-  <div class="boardheader-number element absolute">번호</div>
-  <div class="boardheader-title element absolute">제목</div>
-  <div class="boardheader-author element absolute">작성자</div>
-  <div class="boardheader-date element absolute">작성일</div>
-  <div class="boardheader-hit element absolute">조회수</div>
+
+<div class="boardheader flex-big">
+  <div class="boardheader-number block-big element absolute">번호</div>
+  <div class="boardheader-title block-big element absolute">제목</div>
+  <div class="boardheader-author block-big element absolute">작성자</div>
+  <div class="boardheader-date block-big element absolute">작성일</div>
+  <div class="boardheader-hit block-big element absolute">조회수</div>
 </div>
-<hr class="boardline">
+<hr class="boardline block-big">
 
 {% for post in page_obj %}
-<a href="{% url 'normalboard:detail' post.pk %}" class="boardcontent">
-  <div class="boardcontent-number element absolute">{{ post.pk }}</div>
-  <div class="boardcontent-title absolute">{{ post.title }} <span
-      class="numofcomments">[{{ post.comment_set.all|length }}]</span> </div>
-  <div class="boardcontent-author element absolute">{{ post.author.last_name }}{{ post.author.first_name }}</div>
-  <div class="boardcontent-date element absolute">{{ post.created_at|date:'Y.m.d' }}</div>
-  <div class="boardcontent-hit element absolute">{{ post.hit }}</div>
+<a href="{% url 'normalboard:detail' post.pk %}" class="boardcontent flex-big">
+  <div class="boardcontent-number block-big element absolute">{{ post.pk }}</div>
+  <div class="boardcontent-title block-big absolute">{{ post.title }} <span
+      class="numofcomments inline-big">[{{ post.comment_set.all|length }}]</span> </div>
+  <div class="boardcontent-author block-big element absolute">{{ post.author.last_name }}{{ post.author.first_name }}
+  </div>
+  <div class="boardcontent-date block-big element absolute">{{ post.created_at|date:'Y.m.d' }}</div>
+  <div class="boardcontent-hit block-big element absolute">{{ post.hit }}</div>
 </a>
-<hr class="boardline">
+<hr class="boardline block-big">
+{% endfor %}
+
+{% for post in page_obj %}
+<a href="{% url 'normalboard:detail' post.pk %}">
+  <h3 class="block-small contenttitle">{{ post.title }}</h3>
+  <div class="postinfo flex-small">
+    <div class="post-profile block-small">
+      <span class="inline-small postauthor">{{ post.author }}</span>
+      <div class="inline-small seperate"></div>
+      <span class="inline-small postdate">{{ post.created_at|date:'y.m.d' }}</span>
+    </div>
+    <div class="hitbox block-small">
+    <img src="{% static 'icon_eye.png' %}" alt="조회수아이콘" class="hiticon-small inline-small">
+    <span class="inline-small posthit">{{ post.hit }}</span>
+  </div>
+  </div>
+</a>
+<hr class="block-small">
 {% endfor %}
 
 <div class="paginator">
   {% if page_obj.has_previous %}
-  <a href="?page=1" class="paginator-item inline-big">처음 <<</a>
-  <a href="?page={{ page_obj.previous_page_number }}" class="paginator-item inline-big">이전 <</a>
-  <a href="?page={{ page_obj.previous_page_number }}" class="paginator-item inline-small">이전</a>
+  <a href="?page=1" class="paginator-item inline-big">처음 <<</a> <a href="?page={{ page_obj.previous_page_number }}"
+      class="paginator-item inline-big">이전 <</a> <a href="?page={{ page_obj.previous_page_number }}"
+        class="paginator-item inline-small">이전</a>
   {% endif %}
   <span class="current inline-small">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
   <span class="current inline-big">전체 페이지 {{ page_obj.paginator.num_pages }}개 중 {{ page_obj.number }}번째 페이지</span>
