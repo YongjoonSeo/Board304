@@ -15,7 +15,7 @@
 
 <h2 class="detailtitle">{{ qpost.title }}</h2>
 <div class="postdata">
-  <h5 class="authordata">{{ qpost.author }}</h5>
+  <h5 class="authordata">{{ qpost.author.last_name }}{{ qpost.author.first_name }}</h5>
   <div class="seperate"></div>
   <h5 class="datedata">{{ qpost.created_at|date:'Y.m.d H:i' }}</h5>
 </div>

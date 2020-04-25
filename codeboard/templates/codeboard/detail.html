@@ -15,7 +15,7 @@
 
 <h2 class="detailtitle">{{ codepost.title }}</h2>
 <div class="postdata">
-  <h5 class="authordata">{{ codepost.author }}</h5>
+  <h5 class="authordata">{{ codepost.author.last_name }}{{ codepost.author.first_name }}</h5>
   <div class="seperate"></div>
   <h5 class="datedata">{{ codepost.created_at|date:'Y.m.d H:i' }}</h5>
 </div>

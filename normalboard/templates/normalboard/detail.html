@@ -15,7 +15,7 @@
 
 <h2 class="detailtitle">{{ post.title }}</h2>
 <div class="postdata">
-  <h5 class="authordata">{{ post.author }}</h5>
+  <h5 class="authordata">{{ post.author.last_name }}{{ post.author.first_name }}</h5>
   <div class="seperate"></div>
   <h5 class="datedata">{{ post.created_at|date:'Y.m.d H:i' }}</h5>
 </div>
