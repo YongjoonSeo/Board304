@@ -77,6 +77,15 @@
   </div>
 
   <div class="container">
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags %}
+    <script>
+      alert('{{ message }}')
+    </script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
     {% block contents %}
     {% endblock %}
   </div>

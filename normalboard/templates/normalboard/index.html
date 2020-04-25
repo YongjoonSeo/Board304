@@ -9,15 +9,6 @@
 {% endblock %}
 
 {% block contents %}
-{% if messages %}
-{% for message in messages %}
-{% if message.tags %}
-<script>
-  alert('{{ message }}')
-</script>
-{% endif %}
-{% endfor %}
-{% endif %}
 <div class="normalboard-titlebox">
   <h1 class="boardtitle">일반 게시판</h1>
 </div>

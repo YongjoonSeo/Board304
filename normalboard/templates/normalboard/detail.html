@@ -12,15 +12,6 @@
 {% endblock %}
 
 {% block contents %}
-{% if messages %}
-{% for message in messages %}
-{% if message.tags %}
-<script>
-  alert('{{ message }}')
-</script>
-{% endif %}
-{% endfor %}
-{% endif %}
 
 <h2 class="detailtitle">{{ post.title }}</h2>
 <div class="postdata">
