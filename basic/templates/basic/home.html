@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 <title>SSAFY304</title>
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+
 {% block contents %}
-<h1>hello world!!</h1>
-<h3>{{ user.student.number }}</h3>
-<h5>testigng</h5>
-<button></button>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<h1>helloooo</h1> 
+<h1 class="imgcaption">4월 5주차 커리큘럼</h1>
+<div class="imgblock">
+  <img src="{% static 'curriculum/202004_5th.png' %}" alt="4월 5주차 커리큘럼">
+</div>
 {% endblock %}
