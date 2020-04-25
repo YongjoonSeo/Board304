@@ -47,17 +47,158 @@
 #updatebtn, #deletebtn {
     cursor: pointer;
     color: white;
-    margin: 0 15px;
+    margin: 0 10px;
+    border: none;
+    min-width: 100px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+}
+
+#updatebtn {
+    background-color: #3C90E2;
+}
+
+#deletebtn {
+    background-color: #4F5A66;
+}
+
+.btnbox {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
 }
 
 button.admit {
     background-color: #3C90E2;
     border-color: #3C90E2;
     margin: 0 15px;
+    color: white;
+    font-size: 14px;
 }
 
 button.cancel {
     background-color: #4F5A66;
     border-color: #4F5A66;
     margin: 0 15px;
+    color: white;
+    font-size: 14px;
+}
+
+.content {
+    background-color: white;
+    padding: 2rem;
+}
+
+.detailtitle {
+    padding-left: 1rem;
+}
+
+.authordata, .datedata {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-top: 0;
+    color: grey;
+}
+
+.datedata {
+    margin-left: 0.7rem;
+}
+
+.seperate {
+    display: inline-block;
+    margin-left: 0.7rem;
+    width: 1px;
+    height: 10px;
+    background-color: grey;
+}
+
+.tolist {
+    background-color: #3C90E2;
+    border: none;
+    width: 134px;
+    height: 45px;
+    line-height: 45px;
+    margin: 3rem auto;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+}
+
+.commentnum-infobox {
+    padding: 0 1rem;
+}
+
+.commentnum-info {
+    color: #3C90E2;
+}
+
+.comment-write {
+    padding: 0 1rem;
+}
+
+.commentbox {
+    padding: 0 1rem;
+}
+
+.commentform {
+    display: flex;
+    padding: 0 1rem;
+    margin-bottom: 1.7rem;
+}
+
+.commentinput {
+    padding-left: 1rem;
+}
+
+.commentbtn {
+    cursor: pointer;
+    color: white;
+    margin: 0 10px;
+    border: none;
+    text-align: center;
+}
+
+.comment-create {
+    background-color: #3C90E2;
+}
+
+.comment-delete {
+    background-color: #4F5A66;
+}
+
+.datedata.comment-date {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.comment-metadata {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-responsive {
+    min-width: 65px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.input-responsive {
+    height: 30px;
+    line-height: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+    .btn-responsive {
+        min-width: 100px !important;
+        height: 34px !important;
+        line-height: 34px !important;
+    }
+
+    .input-responsive {
+        height: 34px !important;
+        line-height: 34px !important;
+    }
 }
