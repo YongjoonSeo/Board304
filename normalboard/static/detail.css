@@ -126,3 +126,58 @@ button.cancel {
     display: block;
     text-align: center;
 }
+
+.commentnum-infobox {
+    padding: 0 1rem;
+}
+
+.commentnum-info {
+    color: #3C90E2;
+}
+
+.comment-write {
+    padding: 0 1rem;
+}
+
+.commentbox {
+    padding: 0 1rem;
+}
+
+.commentform {
+    display: flex;
+    padding: 0 1rem;
+    margin-bottom: 1.7rem;
+}
+
+.commentinput {
+    padding-left: 1rem;
+}
+
+.commentbtn {
+    cursor: pointer;
+    color: white;
+    margin: 0 10px;
+    border: none;
+    min-width: 100px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+}
+
+.comment-create {
+    background-color: #3C90E2;
+}
+
+.comment-delete {
+    background-color: #4F5A66;
+}
+
+.datedata.comment-date {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.comment-metadata {
+    display: flex;
+    justify-content: space-between;
+}

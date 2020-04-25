@@ -169,3 +169,8 @@
     height: 2.5rem;
     margin-left: 1rem;
 }
+
+.numofcomments {
+    font-size: 90%;
+    color: gray;
+}
