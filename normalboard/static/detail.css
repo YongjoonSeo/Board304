@@ -126,3 +126,79 @@ button.cancel {
     display: block;
     text-align: center;
 }
+
+.commentnum-infobox {
+    padding: 0 1rem;
+}
+
+.commentnum-info {
+    color: #3C90E2;
+}
+
+.comment-write {
+    padding: 0 1rem;
+}
+
+.commentbox {
+    padding: 0 1rem;
+}
+
+.commentform {
+    display: flex;
+    padding: 0 1rem;
+    margin-bottom: 1.7rem;
+}
+
+.commentinput {
+    padding-left: 1rem;
+}
+
+.commentbtn {
+    cursor: pointer;
+    color: white;
+    margin: 0 10px;
+    border: none;
+    text-align: center;
+}
+
+.comment-create {
+    background-color: #3C90E2;
+}
+
+.comment-delete {
+    background-color: #4F5A66;
+}
+
+.datedata.comment-date {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.comment-metadata {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-responsive {
+    min-width: 65px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.input-responsive {
+    height: 30px;
+    line-height: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+    .btn-responsive {
+        min-width: 100px !important;
+        height: 34px !important;
+        line-height: 34px !important;
+    }
+
+    .input-responsive {
+        height: 34px !important;
+        line-height: 34px !important;
+    }
+}

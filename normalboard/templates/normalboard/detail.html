@@ -7,20 +7,11 @@
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'atom-one-dark.css' %}">
+<link rel="stylesheet" href="{% static 'monokai-sublime.css' %}">
 <link rel="stylesheet" href="{% static 'detail.css' %}">
 {% endblock %}
 
 {% block contents %}
-{% if messages %}
-{% for message in messages %}
-{% if message.tags %}
-<script>
-  alert('{{ message }}')
-</script>
-{% endif %}
-{% endfor %}
-{% endif %}
 
 <h2 class="detailtitle">{{ post.title }}</h2>
 <div class="postdata">
@@ -32,11 +23,49 @@
 <div class="content">
   {{ post.content|safe_markdown }}
 </div>
+<hr>
+
+<p class="commentnum-infobox">총 <span class="commentnum-info">{{ post.comment_set.all|length }}</span>건의 댓글이 있습니다.</p>
+<hr>
+
+<h3 class="comment-write">댓글쓰기</h3>
+<form action="{% url 'normalboard:create_comments' post.pk %}" method="POST" class="commentform">
+  {% csrf_token %}
+  {{ commentform }}
+  <button class="commentbtn btn-responsive comment-create">등록</button>
+</form>
+<hr>
+
+<div class="comments">
+  {% for comment in comments %}
+  <div class="commentbox">
+    <div class="comment-metadata">
+    <div class="comment-profile">
+      <span class="comment-username">{{ comment.user }}</span>
+      <div class="seperate"></div>
+      <h5 class="datedata comment-date">{{ comment.created_at|date:'Y.m.d H:i' }}</h5>
+    </div>
+    {% if comment.user == request.user %}
+    <form action="{% url 'normalboard:delete_comments' post.pk comment.pk %}" method="POST">
+      {% csrf_token %}
+      <button class="commentbtn btn-responsive comment-delete">삭제</button>
+    </form>
+    {% endif %}
+  </div>
+    <p>{{ comment.content }}</p>
+  </div>
+  <hr>
+  {% endfor %}
+</div>
+
+
+
+
 
 {% if request.user == post.author %}
 <div class="btnbox">
-<button id="updatebtn">수정</button>
-<button id="deletebtn">삭제</button>
+  <button id="updatebtn">수정</button>
+  <button id="deletebtn">삭제</button>
 </div>
 {% endif %}
 <a href="{% url 'normalboard:index' %}" class="tolist">목록</a>

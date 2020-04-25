@@ -18,15 +18,6 @@
 {% endblock %}
 
 {% block contents %}
-{% if messages %}
-{% for message in messages %}
-{% if message.tags %}
-<script>
-  alert('{{ message }}')
-</script>
-{% endif %}
-{% endfor %}
-{% endif %}
 
 {% if request.resolver_match.url_name == 'create' %}
 <h1 class="menutitle">새 글 쓰기</h1>
