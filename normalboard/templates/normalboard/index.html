@@ -28,7 +28,7 @@
 {% for post in page_obj %}
 <a href="{% url 'normalboard:detail' post.pk %}" class="boardcontent">
   <div class="boardcontent-number element absolute">{{ post.pk }}</div>
-  <div class="boardcontent-title absolute">{{ post.title }}</div>
+  <div class="boardcontent-title absolute">{{ post.title }} <span class="numofcomments">[{{ post.comment_set.all|length }}]</span> </div>
   <div class="boardcontent-author element absolute">{{ post.author.last_name }}{{ post.author.first_name }}</div>
   <div class="boardcontent-date element absolute">{{ post.created_at|date:'Y.m.d' }}</div>
   <div class="boardcontent-hit element absolute">{{ post.hit }}</div>
@@ -49,4 +49,8 @@
   <a href="?page={{ page_obj.paginator.num_pages }}">마지막</a>
 {% endif %}
 
+<form action="{% url 'normalboard:search' %}">
+  <input type="text" name="query" placeholder="글 제목을 입력하세요.">
+  <button>검색</button>
+</form>
 {% endblock %}

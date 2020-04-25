@@ -148,3 +148,14 @@ def delete_comments(request, pk, comment_pk):
     messages.success(request, '댓글이 삭제되었습니다.')
     return redirect('normalboard:detail', pk)
 
+@login_required
+def search(request):
+    keyword = request.GET.get('query')
+    posts = Post.objects.filter(title__contains=keyword).order_by('-pk')
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj,
+    }
+    return render(request, 'normalboard/index.html', context)
