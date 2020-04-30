@@ -12,9 +12,9 @@
 <div class="boardtitlebox questionboard-titlebox">
   <h1 class="boardtitle">질문 게시판</h1>
 </div>
-<div class="btn-block">
+<form action="{% url 'questionboard:create' %}" class="btn-block">
   <button class="btn new-btn"><a href="{% url 'questionboard:create' %}">글쓰기</a></button>
-</div>
+</form>
 
 <div class="boardheader flex-big">
   <div class="boardheader-number block-big element absolute">번호</div>

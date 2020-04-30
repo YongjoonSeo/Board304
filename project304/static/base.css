@@ -30,6 +30,7 @@ button, input {
   top: 0;
   height: 60px;
   padding: 10px 20px;
+  z-index: 1030;
 }
 
 a {
@@ -325,4 +326,23 @@ a {
   width: 80%;
   max-width: 1000px;
   margin: 3rem auto;
+}
+
+.login-required {
+  text-align: center;
+  margin-top: 10rem;
+}
+
+.loginlink-form {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.loginlink-btn {
+  background-color: #3c90e2;
+  border: none;
+  min-width: 150px;
+  height: 37px;
+  cursor: pointer;
+  color: white;
 }
