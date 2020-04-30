@@ -159,3 +159,12 @@ def search(request):
         'page_obj': page_obj,
     }
     return render(request, 'questionboard/index.html', context)
+
+@login_required
+def like(request, pk):
+    qpost = get_object_or_404(QPost, pk=pk)
+    if qpost.like_users.filter(id=request.user.pk).exists():
+        qpost.like_users.remove(request.user)
+    else:
+        qpost.like_users.add(request.user)
+    return redirect('questionboard:detail', pk)

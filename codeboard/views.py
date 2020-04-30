@@ -159,3 +159,12 @@ def search(request):
         'page_obj': page_obj,
     }
     return render(request, 'codeboard/index.html', context)
+
+@login_required
+def like(request, pk):
+    codepost = get_object_or_404(CodePost, pk=pk)
+    if codepost.like_users.filter(id=request.user.pk).exists():
+        codepost.like_users.remove(request.user)
+    else:
+        codepost.like_users.add(request.user)
+    return redirect('codeboard:detail', pk)

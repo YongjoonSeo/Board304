@@ -29,7 +29,8 @@
 <a href="{% url 'questionboard:detail' post.pk %}" class="boardcontent flex-big">
   <div class="boardcontent-number block-big element absolute">{{ post.pk }}</div>
   <div class="boardcontent-title block-big absolute">{{ post.title }} <span
-      class="numofcomments inline-big">[{{ post.qcomment_set.all|length }}]</span> </div>
+      class="numofcomments inline-big">[{{ post.qcomment_set.all|length }}]</span>  <span class="like"><i
+        class="fas fa-heart fa-sm"></i> {{ post.like_users.all|length }}</span></div>
   <div class="boardcontent-author block-big element absolute">{{ post.author.last_name }}{{ post.author.first_name }}
   </div>
   <div class="boardcontent-date block-big element absolute">{{ post.created_at|date:'Y.m.d' }}</div>
@@ -51,6 +52,8 @@
     <div class="hitbox block-small">
     <img src="{% static 'icon_eye.png' %}" alt="조회수아이콘" class="hiticon-small inline-small">
     <span class="inline-small posthit">{{ post.hit }}</span>
+    <span class="like-sm"><i class="fas fa-heart fa-sm"></i></span>
+    <span class="inline-small posthit">{{ post.like_users.all|length }}</span>
   </div>
   </div>
 </a>

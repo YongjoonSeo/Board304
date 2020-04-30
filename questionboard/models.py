@@ -12,6 +12,7 @@ class QPost(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     hit = models.IntegerField(default=0)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_qposts')
 
     def __str__(self):
         return self.title

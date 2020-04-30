@@ -25,7 +25,14 @@
 </div>
 <hr>
 
-<p class="commentnum-infobox">총 <span class="commentnum-info">{{ codepost.codecomment_set.all|length }}</span>건의 댓글이 있습니다.</p>
+<p class="commentnum-infobox">
+  총 <span class="commentnum-info">{{ codepost.codecomment_set.all|length }}</span>건의 댓글이 있습니다.
+  {% if request.user in codepost.like_users.all %}
+  <a href="{% url 'codeboard:like' codepost.pk %}" class="like"><i class="fas fa-heart"></i>  {{ codepost.like_users.all|length }}</a>
+  {% else %}
+  <a href="{% url 'codeboard:like' codepost.pk %}" class="like"><i class="far fa-heart"></i>  {{ codepost.like_users.all|length }}</a>
+  {% endif %}
+</p>
 <hr>
 
 <h3 class="comment-write">댓글쓰기</h3>
