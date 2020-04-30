@@ -265,3 +265,15 @@
     font-size: 90%;
     color: gray;
 }
+
+.like {
+    color: #3c90e2;
+    margin-left: 2rem;
+    font-size: 90%;
+}
+
+.like-sm {
+    color: #3c90e2;
+    vertical-align: middle;
+    margin-left: 1rem;
+}
