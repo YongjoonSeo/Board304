@@ -159,3 +159,12 @@ def search(request):
         'page_obj': page_obj,
     }
     return render(request, 'normalboard/index.html', context)
+
+@login_required
+def like(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if post.like_users.filter(id=request.user.pk).exists():
+        post.like_users.remove(request.user)
+    else:
+        post.like_users.add(request.user)
+    return redirect('normalboard:detail', pk)
