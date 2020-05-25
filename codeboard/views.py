@@ -30,6 +30,7 @@ def create(request):
             codepost.save()
             messages.success(request, '글 작성이 완료되었습니다.')
             return redirect('codeboard:detail', codepost.pk)
+        messages.warning(request, '글 제목은 20자 이내, 비밀번호는 8자 이내입니다.')
     else:
         form = CodePostForm()
     context = {
