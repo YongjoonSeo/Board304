@@ -57,19 +57,19 @@ SSAFY 교육 사이트, SSAFY 취업 지원 사이트 등으로 쉽게 갈 수 �
 - 코드 블럭
   - highlight.js를 이용하여 191개의 컴퓨터 언어에 대한 코드 스타일 적용
 
-![code block](./img/code.jpg)
+![code block](./img/code.JPG)
 
 <br>
 
 - 댓글, 좋아요 기능
 
-![reply and like](./img/reply.jpg)
+![reply and like](./img/reply.JPG)
 
 <br>
 
 - 검색 기능 및 조회수
 
-![search and visit](./img/search.jpg)
+![search and visit](./img/search.JPG)
 
 <br>
 
